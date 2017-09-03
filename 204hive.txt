@@ -1,0 +1,107 @@
+http://www.aboutyun.com/thread-12431-1-1.html
+
+http://10.15.0.208:8080/#/main/hosts admin/admin
+http://10.15.0.206:8888/beeswax/#query hue/hue
+http://cdr-yl-02:11000/oozie/
+http://10.15.0.205:25020/
+查看StateStore
+http://node1:25020/
+查看Catalog
+http://node1:25010/
+/etc/spark/conf.dist
+ 
+UDH等http://ae.yyuap.com/pages/viewpage.action?pageId=917572
+UDH演示环境
+集群管理器	guest	guest	http://123.103.9.207:8887
+数据服务	guest	guest	http://123.103.9.207:8887
+
+http://luchunli.blog.51cto.com/2368057/1687458
+http://cdr-yl-02:49622
+navicat 8.0 mysql
+which hive
+cd /usr/bin
+./hive
+show tables;
+show databases;
+create table test_trade_detail (id bigint, account string, income double, expenses double, time string) row format delimited fields terminated by '\t';
+show tables;
+show create table test_trade_detail;
+1	10.15.0.204	cdr-yl-02	用户名：root，密码：ufsoft*123	副节点（安装有manager-agent）
+2	10.15.0.205	cdr-yl-03	用户名：root，密码：ufsoft*123	副节点（安装有manager-agent）
+3	10.15.0.206	cdr-yl-04	用户名：root，密码：ufsoft*123	副节点（安装有manager-agent）
+4	10.15.0.208	cdr-yl-05	用户名：root，密码：ufsoft*123	"主节点和副节点描述
+（安装有manager-server和manager-agent）"
+
+http://cdr-yl-05:50070/dfshealth.jsp
+vim test_trade_detail.txt
+load data local inpath '/root/test_trade_detail.txt' into table test_trade_detail;
+select * from test_trade_detail;
+select count(*) from test_trade_detail;
+create table test_account (id bigint, account string) row format delimited fields terminated by '\t';
+load data local inpath '/root/test_trade_detail.txt' into table test_account;
+select * from test_account;
+
+chmod u+x t.sh
+
+create table dim_gy_djzclx (djzclx_dm string,djzclxmc string,dlbz string,zlbz string,xlbz string,sjdjzclx_dm string,xybz string,yxbz string) row format delimited fields terminated by '\t';
+
+create table dim_gy_gk (skgk_dm string,gk_dm string,skgkmc string,xybz string,yxbz string,yhhb_dm string,yhyywd_dm string,yhzh string,zhxz_dm string,xzqhsz_dm string,ly string) row format delimited fields terminated by '\t';
+
+hive -e "show tables;" > tables.txt
+     cat tables.txt |while read eachline
+      do
+      hive -e "show create table $eachline" >>tablesDDL.txt
+      done
+tables.txt列出了所有表
+tablesDDL.txt列出了建表语句
+
+http://jingyan.baidu.com/article/454316ab4e9e65f7a7c03ad1.html
+C:\Program Files (x86)\MySQL\MySQL Server 5.1\bin
+登陆mysql
+mysql -u root -p
+170103 10:09:08 [Warning] '--default-character-set' is deprecated and will be removed in a future release. Please use '--character-set-server' instead.
+
+#hadoop jar cleaner.jar /flume/apache_log/14-02-25 /cleaned/140225
+CREATE EXTERNAL TABLE hmbbs (ip string, logtime string, url string) PARTITIONED BY (logdate string) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' LOCATION '/cleaned';
+alter table hmbbs add partition (logdate='140314') location "/cleaned/140314";
+
+create table pv_2013_05_31 row format delimited fields terminated by '\t' as select count(*) from hmbbs where logdate='2013-05-31';
+select count(distinct ip) from hmbbs where logdate='2013-05-31';
+sqoop export --connect jdbc:mysql://192.168.8.103:3306/hmbbs --username root --password hadoop --export-dir '/user/hive/warehouse/pv_2013_05_31/000000_0' --table pv
+
+create database test_dw;
+show databases;
+
+CREATE TABLE tmp_table 
+(
+title   string, 
+minimum_bid     double,
+quantity        bigint,
+have_invoice    bigint
+)COMMENT '注释：XXX' 
+ PARTITIONED BY(pt STRING) 
+ ROW FORMAT DELIMITED 
+   FIELDS TERMINATED BY '\001' 
+STORED AS SEQUENCEFILE;
+ 
+SHOW TABLES '*TMP*'; #支持模糊查询
+SHOW PARTITIONS TMP_TABLE; #查看表有哪些分区
+DESCRIBE TMP_TABLE; #查看表结构
+====================
+hbase
+启用表
+enable 'user'
+
+
+删除表
+disable 'user'
+drop 'user'
+==========================
+cloudera-scm-agent
+impala-shell -h
+impala-shell -v
+
+
+
+================
+/var/lib/oozie/ext-2.2
